@@ -4,10 +4,10 @@
 \usepackage{geometry}
          \geometry{
                  b5paper,
-                 right=30mm,
-                 bottom=30mm,
-                 left=30mm,
-                 top=30mm,
+                 right=25mm,
+                 bottom=25mm,
+                 left=25mm,
+                 top=25mm,
                  }
 
 \usepackage{silence}
@@ -88,7 +88,7 @@
             1, 
             subsection, 
             1, 
-            {\parindent=0.5cm \hangindent=0.5cm \hangafter=0 \capitalisewords{#1} \\ \indent \small by #2}, 
+            {\parindent=0.5cm \hangindent=0.5cm \hangafter=0 \capitalisewords{#1} \\ \indent \small \itshape #2}, 
             #4
         },
         pagecommand={\thispagestyle{fancy}}
@@ -122,6 +122,7 @@
 \MFUnocap{out}
 \MFUnocap{as}
 \MFUnocap{over}
+\MFUnocap{into}
 
 \MFUnocap{across}
 
@@ -135,7 +136,7 @@
     \newpage % Start a new page
    % \thispagestyle{empty} % Optional: Remove the page number
     \begin{center}
-        \vspace*{0.35\textheight}% Vertically center the text
+        \vspace*{0.3\textheight}% Vertically center the text
         \Large \bfseries \textsc {#1}\\
         \vspace{1cm}
           \LARGE \bfseries \textsc {#2}
@@ -143,6 +144,20 @@
     \end{center}
     \addcontentsline{toc}{section}{\textsc{#1 - #2}}
     \newpage % Start a new page after the section title
+}
+
+\newcommand{\addmessage}[2]{
+\begin{center}
+\addcontentsline{toc}{subsection}{Message of the #1}    
+\subsection*{\textsc{Message of the #1}}
+	\end{center}
+
+   
+    
+    \begin{wrapfigure}{l}{0.3\textwidth}
+		\includegraphics[width=0.3\textwidth]{Images/#2}
+	\end{wrapfigure}
+	\vspace{2em} % Adjust vertical space as needed
 }
 
 
@@ -175,8 +190,8 @@
 
  
 
-%\newcommand{\tocbutton}{\hyperlink{toc}\fbox{{\textit{\footnotesize{Click here to Return to the table of Contents}}}}}
-%\fancyhead[R]{\tocbutton}
+\newcommand{\tocbutton}{\hyperlink{toc}\fbox{{\textit{\footnotesize{Click here to Return to the table of Contents}}}}}
+\fancyhead[R]{\tocbutton}
 
 
 
@@ -191,95 +206,21 @@
 
 \begin{document}
 
-\newgeometry{
-    right=0mm,
-    bottom=0mm,
-    left=0mm,
-    top=0mm,
-}
-
-\thispagestyle{empty} % Remove page number
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio]{Images/Front.jpeg}
-\end{figure}
-\newpage
-
-
-        
-\newgeometry{
-    right=15mm,
-    bottom=15mm,
-    left=15mm,
-    top=15mm,
-}
-
-
-\begin{titlepage}
-    \centering
-    \includegraphics[width=0.2\textwidth]{Images/Logo.jpeg}\par\vspace{1.5cm}
-    {\scshape\LARGE International Research Symposium - 2024 \par}
-    {\scshape\Large (IRS 2024-UoVT)\par}
-    \vspace{2.5cm}
-    {\huge  Vocational Technology Education for a Sustainable Greener Economy \par}
-    \vspace{2cm}
-    \includegraphics[width=0.2\textwidth]{Images/Unilogo.png}\\
-    \vspace{2.5cm}
-    {\Large University of Vocational Technology\par}
-    %\vspace{0.5cm}
-    {\Large Sri Lanka\par}
-    \vfill
-    {\large December 2024\par}
-
-    % You can add more details here if needed
-\end{titlepage}
-\restoregeometry
-\setcounter{page}{1}
-\pagenumbering{Roman}
-
-
-\vspace*{1cm}
-\begin{center}
-    \LARGE{\textsc{\textbf{Book of Abstracts}}}\\ \vspace{1cm}
-    \Large{International Research Symposium - 2024}\\ \vspace{0.5cm}
-    IRS 2024 - UoVT
-\end{center}
-\vspace{1cm}
-\textbf{DISCLAIMER}\\ 
-
-ISSN 2602-8778: \textcopyright \, University of Vocational Technology\\
-
-
-The papers published in these proceedings reflect the opinion of the respective authors.
-Information contained in these proceedings has been obtained by the editors from sources
-believed to be reliable. Authors of specific papers are responsible for the accuracy of the text
-and technical data. Neither the publisher nor the editors guarantee the accuracy or completeness
-of any information published herein, and neither the publisher nor the editors shall be
-responsible for any errors, omissions, or damages arising out of use of this information.
-Trademarks are used with no warranty of free usability.
-
-All rights reserved. No part of this publication, including the cover design, may be reproduced,
-stored or transmitted in any form or by any means, whether electrical, chemical, mechanical,
-optical, recording or photocopying, without prior permission of the publisher.
+\input{Preambles/Coverpage}
 
 
 
-\newpage
-% Front page without margins
-% \newgeometry{top=0cm, bottom=0cm, left=0cm, right=0cm}
-% \begin{center}
-% 	\includegraphics[width=\paperwidth, height=\paperheight]{Images/Front.png}
-% \end{center}
-% \restoregeometry
 
-%\clearpage
-% Start page numbering from this page
+\input{Preambles/Titlepage}
 
-% Table of Contents
+      
+
+\input{Preambles/Copyrights}
+
 
 \addcontentsline{toc}{section}{\textsc{Table of Contents}}
 %\setlocalecaption{english}{contents}{Table of Contents}
-%\hypertarget{toc}{}
+\hypertarget{toc}{}
 \tableofcontents
 \newpage
 
@@ -287,7 +228,7 @@ optical, recording or photocopying, without prior permission of the publisher.
 
 
 
- 
+
 
 
 
@@ -302,9 +243,9 @@ optical, recording or photocopying, without prior permission of the publisher.
 \input{Messages/Guest}
 \input{Messages/DeanFE}
 \input{Messages/DeanFET}
-\input{Messages/DeanFICT}
 \input{Messages/DeanFIT}
-%\input{Messages/Chair}
+\input{Messages/DeanFICT}
+\input{Messages/Chair}
 
 
 
@@ -331,6 +272,8 @@ optical, recording or photocopying, without prior permission of the publisher.
 \input{Docs/Doc3}
 \input{Docs/Doc4}
 \input{Docs/Doc5}
+
+\newpage
 
 % Add more sections as needed
 \newgeometry{
