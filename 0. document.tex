@@ -5,7 +5,7 @@
          \geometry{
                  b5paper,
                  right=25mm,
-                 bottom=25mm,
+                 bottom=20mm,
                  left=25mm,
                  top=25mm,
                  }
@@ -13,6 +13,35 @@
 \usepackage{silence}
 \WarningFilter{hyperref}{}
 \usepackage{longtable}
+
+
+
+
+
+\usepackage{pdfoverlay}
+%\usepackage{everypage}
+
+\usepackage{tikz}
+
+
+\newcommand{\overlayHeader}{
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[white] (current page.north west) rectangle ([yshift=-2.51cm]current page.north east);
+        \node[anchor=north, yshift=-1cm,xshift=1cm] at (current page.north) { % Shift down by 1 cm
+            \begin{minipage}[b]{0.9\textwidth}
+            \centering
+               \textcolor{lightblack}{ \textbf{\small{8\textsuperscript{th} International Research Symposium of University of Vocational Technology 2024}\\ \vspace{0.3cm}
+                Ratmalana, Sri Lanka - Thursday, 12\textsuperscript{th} December 2024
+                }}
+            \end{minipage}
+            \hspace{0.5cm} % Adjust the space as needed
+            \includegraphics[height=1cm]{Images/LongLogo.jpeg}
+        };
+    \end{tikzpicture}
+}
+
+
+
 
 
  \usepackage{array}
@@ -91,7 +120,7 @@
             {\parindent=0.5cm \hangindent=0.5cm \hangafter=0 \capitalisewords{#1} \\ \indent \small \itshape #2}, 
             #4
         },
-        pagecommand={\thispagestyle{fancy}}
+        pagecommand={\overlayHeader}
     ]{#3}
 }
 
@@ -123,6 +152,7 @@
 \MFUnocap{as}
 \MFUnocap{over}
 \MFUnocap{into}
+\MFUnocap{from}
 
 \MFUnocap{across}
 
@@ -157,7 +187,7 @@
     \begin{wrapfigure}{l}{0.3\textwidth}
 		\includegraphics[width=0.3\textwidth]{Images/#2}
 	\end{wrapfigure}
-	\vspace{2em} % Adjust vertical space as needed
+	%\vspace{2em} % Adjust vertical space as needed
 }
 
 
@@ -190,8 +220,8 @@
 
  
 
-\newcommand{\tocbutton}{\hyperlink{toc}\fbox{{\textit{\footnotesize{Click here to Return to the table of Contents}}}}}
-\fancyhead[R]{\tocbutton}
+% \newcommand{\tocbutton}{\hyperlink{toc}\fbox{{\textit{\footnotesize{Click here to Return to the table of Contents}}}}}
+% \fancyhead[R]{\tocbutton}
 
 
 
